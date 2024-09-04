@@ -33,3 +33,4 @@ How to run:
 
 
 Credit: https://huggingface.co/spaces/not-lain/background-removal
+Sample images taken on Pexel and Unsplash
