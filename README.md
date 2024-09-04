@@ -30,3 +30,6 @@ How to run:
   or
   
   -Run the file directlty with command line in Terminal or Cmd
+
+
+Credit: https://huggingface.co/spaces/not-lain/background-removal
