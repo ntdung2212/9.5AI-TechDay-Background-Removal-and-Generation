@@ -43,23 +43,27 @@ class MyApp(QWidget):
         if image_url:
             # Call API using the image URL
             result = CallAPI.CallAPIWithUrl(image_url)
+            if isinstance(result, list) and len(result) >= 2:
+                self.resultImage = result[0]  # New image (background removed)
+                self.originalImage = result[1]  # Original image
+            else:
+                print("Unexpected result format for URL input.")
+                return
         elif self.imagePath:
             # Call API using the local file
             result = CallAPI.CallAPI(self.imagePath)
+            self.resultImage = result  # Since result is a single image path
+
         else:
             print("No file or URL selected.")
             return
         
-        if isinstance(result, list) and len(result) >= 2:
-            self.resultImage = result[0]  # New image (background removed)
-            self.originalImage = result[1]  # Original image
-
-            if self.resultImage and self.originalImage:
-                pixmap0 = QPixmap(self.resultImage)
-                self.OutputView.setPixmap(pixmap0)
-                pixmap1 = QPixmap(self.originalImage)
-                self.InputView.setPixmap(pixmap1)
-                
+        # Display the result image
+        if self.resultImage:
+            pixmap = QPixmap(self.resultImage)
+            self.OutputView.setPixmap(pixmap)
+        else:
+            print("No result image to display.")
 
     def Save(self):
         if not self.resultImage:
