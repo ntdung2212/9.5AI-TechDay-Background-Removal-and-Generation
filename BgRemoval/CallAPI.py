@@ -8,3 +8,14 @@ def CallAPI(filepath):
 		api_name="/png"
 	)
 	return result
+
+
+
+def CallAPIWithUrl(image_url):
+    client = Client("not-lain/background-removal")
+    result = client.predict(
+        image=image_url,
+        api_name="/text"
+    )
+    # Assuming the API returns a list with the new image at position 0 and the original image at position 1
+    return result

@@ -1,9 +1,9 @@
 import sys
 import os
-from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QFileDialog
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QFileDialog, QLineEdit
 from PyQt6.QtGui import QPixmap
 from PyQt6 import uic
-import CallAPI
+import CallAPI  # Import CallAPI module
 
 # Ensure path is relative to the script location
 currentdir = os.path.dirname(os.path.abspath(__file__))
@@ -20,6 +20,7 @@ class MyApp(QWidget):
         self.GetFilePathButton = self.findChild(QPushButton, "GetFilePath")
         self.RunButton = self.findChild(QPushButton, "RunBgR")
         self.SavePNGButton = self.findChild(QPushButton, "SavePNG")
+        self.UrlInput = self.findChild(QLineEdit, "UrlInput")  # Add a QLineEdit for URL input
         
         self.GetFilePathButton.clicked.connect(self.GetFile)
         self.RunButton.clicked.connect(self.Run)
@@ -27,41 +28,48 @@ class MyApp(QWidget):
         
         self.imagePath = None
         self.resultImage = None
+        self.originalImage = None
 
     def GetFile(self):
         filename, _ = QFileDialog.getOpenFileName(self, "Choose an image...", "", "Images (*.png *.jpg *.jpeg)")
         if filename:
             self.imagePath = filename
+            self.UrlInput.clear()  # Clear URL input if file is selected
             pixmap = QPixmap(self.imagePath)
             self.InputView.setPixmap(pixmap)
 
     def Run(self):
-        if not self.imagePath:
-            print("No file selected.")
-            return
-
-        result = CallAPI.CallAPI(self.imagePath)
-        if isinstance(result, str):
-        # Assuming result is a path to the image file
-            self.resultImage = result
-            pixmap = QPixmap(self.resultImage)
-            self.OutputView.setPixmap(pixmap)
+        image_url = self.UrlInput.text().strip()
+        if image_url:
+            # Call API using the image URL
+            result = CallAPI.CallAPIWithUrl(image_url)
+        elif self.imagePath:
+            # Call API using the local file
+            result = CallAPI.CallAPI(self.imagePath)
         else:
-            print("Unexpected result format:", result)
+            print("No file or URL selected.")
+            return
+        
+        if isinstance(result, list) and len(result) >= 2:
+            self.resultImage = result[0]  # New image (background removed)
+            self.originalImage = result[1]  # Original image
+
+            if self.resultImage and self.originalImage:
+                pixmap0 = QPixmap(self.resultImage)
+                self.OutputView.setPixmap(pixmap0)
+                pixmap1 = QPixmap(self.originalImage)
+                self.InputView.setPixmap(pixmap1)
+                
 
     def Save(self):
         if not self.resultImage:
             print("No processed image to save.")
             return
         
-        savePath, _ = QFileDialog.getSaveFileName(self, "Save Image", "", "PNG Files (*.png)")
+        savePath, _ = QFileDialog.getSaveFileName(self, "Save Image", "", "WebP Files (*.webp);;PNG Files (*.png)")
         if savePath:
-            if isinstance(self.resultImage, str):
-                pixmap = QPixmap(self.resultImage)
-                pixmap.save(savePath)
-            else:
-                with open(savePath, 'wb') as f:
-                    f.write(self.resultImage)
+            pixmap = QPixmap(self.resultImage)
+            pixmap.save(savePath)
 
 app = QApplication(sys.argv)
 window = MyApp()

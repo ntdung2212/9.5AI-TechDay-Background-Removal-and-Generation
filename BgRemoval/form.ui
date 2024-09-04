@@ -6,39 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>773</width>
-    <height>536</height>
+    <width>1751</width>
+    <height>1088</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
-  <widget class="QTextBrowser" name="Title">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>0</y>
-     <width>256</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Background Removal&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
+  <property name="layoutDirection">
+   <enum>Qt::LayoutDirection::LeftToRight</enum>
+  </property>
   <widget class="QPushButton" name="RunBgR">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>490</y>
-     <width>151</width>
+     <x>800</x>
+     <y>1000</y>
+     <width>931</width>
      <height>31</height>
     </rect>
    </property>
@@ -54,9 +37,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <widget class="QPushButton" name="SavePNG">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>490</y>
-     <width>121</width>
+     <x>410</x>
+     <y>1000</y>
+     <width>371</width>
      <height>31</height>
     </rect>
    </property>
@@ -72,10 +55,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <widget class="QLabel" name="InputView">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>50</y>
-     <width>351</width>
-     <height>401</height>
+     <x>20</x>
+     <y>20</y>
+     <width>851</width>
+     <height>961</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -97,10 +80,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <widget class="QLabel" name="OutputView">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>50</y>
-     <width>351</width>
-     <height>421</height>
+     <x>880</x>
+     <y>20</y>
+     <width>851</width>
+     <height>961</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -122,9 +105,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <widget class="QPushButton" name="GetFilePath">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>490</y>
-     <width>151</width>
+     <x>40</x>
+     <y>1000</y>
+     <width>351</width>
      <height>31</height>
     </rect>
    </property>
@@ -135,6 +118,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
    </property>
    <property name="text">
     <string>Select Image</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="UrlInput">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>1040</y>
+     <width>741</width>
+     <height>31</height>
+    </rect>
    </property>
   </widget>
  </widget>
