@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1855</width>
-    <height>1078</height>
+    <width>1000</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -71,28 +71,92 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>200</width>
+       <width>150</width>
        <height>0</height>
       </size>
      </property>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>151</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>140</width>
+        <height>140</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>logo.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="GetFilePath">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>570</y>
+        <width>150</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>150</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Select Image</string>
+      </property>
+     </widget>
      <widget class="QLineEdit" name="UrlInput">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>920</y>
-        <width>181</width>
+        <x>0</x>
+        <y>540</y>
+        <width>150</width>
         <height>24</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>150</width>
+        <height>0</height>
+       </size>
       </property>
      </widget>
      <widget class="QPushButton" name="RunBgR">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>1010</y>
-        <width>181</width>
-        <height>29</height>
+        <x>0</x>
+        <y>710</y>
+        <width>150</width>
+        <height>61</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>150</width>
+        <height>0</height>
+       </size>
       </property>
       <property name="font">
        <font>
@@ -106,11 +170,17 @@
      <widget class="QPushButton" name="SavePNG">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>860</y>
-        <width>181</width>
+        <x>0</x>
+        <y>620</y>
+        <width>150</width>
         <height>29</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>150</width>
+        <height>0</height>
+       </size>
       </property>
       <property name="font">
        <font>
@@ -119,46 +189,6 @@
       </property>
       <property name="text">
        <string>Save Picture</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="GetFilePath">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>950</y>
-        <width>181</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Select Image</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>0</y>
-        <width>190</width>
-        <height>190</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>logo.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
     </widget>
