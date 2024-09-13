@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Widget</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>logo.jpg</normaloff>logo.jpg</iconset>
+  </property>
   <property name="layoutDirection">
    <enum>Qt::LayoutDirection::LeftToRight</enum>
   </property>
