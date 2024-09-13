@@ -221,14 +221,16 @@ class MyApp(QWidget):
         super().resizeEvent(event)
 
     def Save(self):
-        if not self.resultImage:
-            print("No processed image to save.")
+        if not self.pixmap_output:
+            print("No image to save.")
             return
-        
+
         savePath, _ = QFileDialog.getSaveFileName(self, "Save Image", "", "WebP Files (*.webp);;PNG Files (*.png)")
         if savePath:
-            pixmap = QPixmap(self.resultImage)
-            pixmap.save(savePath)
+            if not self.pixmap_output.isNull():
+                self.pixmap_output.save(savePath)
+            else:
+                print("Failed to save image.")
 
 
 app = QApplication(sys.argv)
