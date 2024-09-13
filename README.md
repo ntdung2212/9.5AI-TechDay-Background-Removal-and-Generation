@@ -1,8 +1,8 @@
-### **Lib requirements:
+### **Lib requirements:**
 
-  -PyQT6
+  **-PyQT6**
 
-  -gradio_client**
+  **-gradio_client**
 
   
 ### Other requirements:
