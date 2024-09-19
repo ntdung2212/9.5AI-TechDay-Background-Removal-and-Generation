@@ -4,10 +4,14 @@
 
   **-gradio_client**
 
+  **-qrcode**
+
+  **-httpx**
+
   
 ### Other requirements:
   
-  -Python 3.11
+  -Python 3.10 or 3.11
   
   -Internet
 
@@ -33,17 +37,23 @@
 
  ## **Description**
  
- -Select Image Button is for selecting an image on the computer
+ -Select Image button is for selecting an image on the computer
  
  -URL Input: If the image is on the internet, paste the URL of the image here
  
  -Prompt Input: Prompt for Background Generation function. **Required to run the function**
  
- -Run BgGeneration Button: run Background Generation function. Remember to type some prompt in the Prompt Input Box before running
+ -Run BgGeneration button: run Background Generation function. Remember to type some prompt in the Prompt Input Box before running
  
- -Run BgRemoval: Run background removal function
+ -Run BgRemoval button: Run background removal function
  
  -Save picture: To save the image after background being removed or generated
+
+ -Generate QR button: Upload the processed image to imgur.com and generate a QR code for other user to download the image
+
+### **Note:**
+
+- Free GPU quota from HuggingFace is quiet limited, only fits ~10-12 images. If you exceeded, you have to wait for a long time.
 
 ### Credit: 
 
