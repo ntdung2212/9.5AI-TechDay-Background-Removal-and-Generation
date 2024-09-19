@@ -37,7 +37,7 @@
  
  -URL Input: If the image is on the internet, paste the URL of the image here
  
- -Prompt Input: Prompt for Background Generation function. Required to run the function
+ -Prompt Input: Prompt for Background Generation function. **Required to run the function**
  
  -Run BgGeneration Button: run Background Generation function. Remember to type some prompt in the Prompt Input Box before running
  
