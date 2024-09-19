@@ -53,7 +53,7 @@
 
 ### **Note:**
 
-- Free GPU quota from HuggingFace is quiet limited, only fits ~10-12 images. If you exceeded, you have to wait for a long time.
+- Free GPU quota from HuggingFace is quiet limited, only fits ~10-12 images. If you exceeded, you have to wait for a long time. If you don't want to wait, you can try using VPN. 
 
 ### Credit: 
 
