@@ -1,19 +1,19 @@
 ### **Lib requirements:**
 
-  **-PyQT6**
+  **- PyQT6**
 
-  **-gradio_client**
+  **- gradio_client**
 
-  **-qrcode**
+  **- qrcode**
 
-  **-httpx**
+  **- httpx**
 
   
 ### Other requirements:
   
-  -Python 3.10 or 3.11
+  - Python 3.10 or 3.11
   
-  -Internet
+  - Internet
 
 
 ### This is a small python program that remove and generate background from images. It calls API from not-lain/background-removal and briaai/BRIA-Background-Generation project on HuggingFace/Spaces
@@ -33,7 +33,7 @@
   
   or
   
-  -Run the file directlty with command line in Terminal or CMD
+  - Run the file directlty with command line in Terminal or CMD
 
  ## **Description**
  
