@@ -31,6 +31,13 @@
   
   -Run the file directlty with command line in Terminal or CMD
 
+ ## **Description**
+ -Select Image Button is for selecting an image on the computer
+ -URL Input: If the image is on the internet, paste the URL of the image here
+ -Prompt Input: Prompt for Background Generation function. Required to run the function
+ -Run BgGeneration Button: run Background Generation function. Remember to type some prompt in the Prompt Input Box before running
+ -Run BgRemoval: Run background removal function
+ -Save picture: To save the image after background being removed or generated
 
 ### Credit: 
 
