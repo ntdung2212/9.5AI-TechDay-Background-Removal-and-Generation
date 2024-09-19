@@ -1,10 +1,13 @@
 import sys
 import os
+import qrcode
+import httpx
+from PIL import Image
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QObject
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QFileDialog, QLineEdit, QTextEdit
 from PyQt6.QtGui import QPixmap
 from PyQt6 import uic
-import CallAPI  # Assume this is your API handler module
+import CallAPI 
 
 # Ensure path is relative to the script location
 currentdir = os.path.dirname(os.path.abspath(__file__))
@@ -55,7 +58,7 @@ class MyApp(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi(form_ui_path, self)
-        self.setWindowTitle('AI Background Removal & Generation')
+        self.setWindowTitle('AI Background Removal & Generation |9.5 AI Club - FPT University - HCM|')
 
         # UI elements
         self.InputView = self.findChild(QLabel, "InputView")
@@ -66,12 +69,14 @@ class MyApp(QWidget):
         self.UrlInput = self.findChild(QLineEdit, "UrlInput")  # Input for URL
         self.GenerateBgButton = self.findChild(QPushButton, "GenerateBg")
         self.PromptInput = self.findChild(QTextEdit, "PromptInput")
+        self.GenerateQRButton = self.findChild(QPushButton, "GenerateQR")
         
         # Connect buttons to functions
         self.GetFilePathButton.clicked.connect(self.GetFile)
         self.RunButton.clicked.connect(self.RunBgRemoval)
         self.SavePNGButton.clicked.connect(self.Save)
         self.GenerateBgButton.clicked.connect(self.GenerateBackground)
+        self.GenerateQRButton.clicked.connect(self.GenerateQRCode)
         
         # Internal state variables
         self.imagePath = None
@@ -86,6 +91,10 @@ class MyApp(QWidget):
         self.pixmap_input = None
         self.pixmap_output = None
         self.api_thread = None  # Thread to run API calls in background
+    
+    def show_maximized(self):
+        """Show the window in maximized mode."""
+        self.showMaximized()  # Automatically expand to the whole screen in windowed mode
 
     def GetFile(self):
         filename, _ = QFileDialog.getOpenFileName(self, "Choose an image...", "", "Images (*.png *.jpg *.jpeg)")
@@ -231,9 +240,90 @@ class MyApp(QWidget):
                 self.pixmap_output.save(savePath)
             else:
                 print("Failed to save image.")
+    
+    def GenerateQRCode(self):
+        if not self.pixmap_output:
+            print("No image to generate QR code for.")
+            return
+
+        # Step 1: Upload the currently displayed image (background-removed or generated)
+        image_url = self.upload_image()  # Call the upload function
+
+        if not image_url:
+            print("Failed to upload image.")
+            return
+
+        # Step 2: Generate the QR code for the image URL
+        qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=4,
+        )
+        qr.add_data(image_url)
+        qr.make(fit=True)
+
+        # Create an image from the QR code
+        qr_img = qr.make_image(fill='black', back_color='white')
+
+        # Ensure the temp folder exists
+        temp_dir = os.path.join(os.getcwd(), 'temp')
+        os.makedirs(temp_dir, exist_ok=True)
+
+        # Save the QR code image in the temp folder
+        qr_img_path = os.path.join(temp_dir, 'qr_code.png')
+        qr_img.save(qr_img_path)
+
+        # Display the QR code in the InputView instead of OutputView
+        self.pixmap_qr = QPixmap(qr_img_path)
+        self.update_image(self.InputView, self.pixmap_qr)  # Change InputView to display the QR code
+
+    def upload_image(self):
+        # Ensure the temp folder exists
+        temp_dir = os.path.join(os.getcwd(), 'temp')
+        os.makedirs(temp_dir, exist_ok=True)
+
+        if not self.pixmap_output:
+            print("No image available for upload.")
+            return None
+
+        # Save the pixmap as a PNG in the temp folder
+        png_image_path = os.path.join(temp_dir, "output_image.png")  # Save to the temp folder
+        self.pixmap_output.save(png_image_path, "PNG")  # Save the QPixmap as PNG
+        print(f"Image saved as PNG: {png_image_path}")
+
+        client_id = '5e6b221fe4d49f1'  # Replace with your Imgur client ID
+
+        try:
+            headers = {'Authorization': f'Client-ID {client_id}'}
+            data = {
+                'type': 'image',
+                'title': 'Simple upload',
+                'description': 'This is a simple image upload in Imgur'
+            }
+            with open(png_image_path, 'rb') as img_file:
+                response = httpx.post(
+                    'https://api.imgur.com/3/image', 
+                    headers=headers, 
+                    files={'image': img_file}, 
+                    data=data
+                )
+
+            if response.status_code == 200 and response.json().get('success', False):
+                imgur_link = response.json()['data']['link']  # Get the public URL of the image
+                print(f"Image uploaded successfully: {imgur_link}")
+                return imgur_link
+            else:
+                print(f"Failed to upload image. Status code: {response.status_code}")
+                return None
+
+        except Exception as e:
+            print(f"Error during image upload: {e}")
+            return None
+
 
 
 app = QApplication(sys.argv)
 window = MyApp()
-window.show()
+window.show_maximized()
 app.exec()

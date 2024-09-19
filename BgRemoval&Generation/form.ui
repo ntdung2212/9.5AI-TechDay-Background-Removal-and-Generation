@@ -10,6 +10,12 @@
     <height>800</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="minimumSize">
    <size>
     <width>1000</width>
@@ -111,7 +117,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>570</y>
+        <y>480</y>
         <width>150</width>
         <height>31</height>
        </rect>
@@ -135,7 +141,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>540</y>
+        <y>450</y>
         <width>150</width>
         <height>24</height>
        </rect>
@@ -151,7 +157,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>740</y>
+        <y>610</y>
         <width>150</width>
         <height>41</height>
        </rect>
@@ -175,7 +181,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>620</y>
+        <y>700</y>
         <width>150</width>
         <height>29</height>
        </rect>
@@ -199,7 +205,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>510</y>
+        <y>420</y>
         <width>121</width>
         <height>31</height>
        </rect>
@@ -212,7 +218,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>300</y>
+        <y>200</y>
         <width>151</width>
         <height>211</height>
        </rect>
@@ -228,7 +234,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>260</y>
+        <y>160</y>
         <width>121</width>
         <height>31</height>
        </rect>
@@ -241,7 +247,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>690</y>
+        <y>560</y>
         <width>150</width>
         <height>41</height>
        </rect>
@@ -259,6 +265,30 @@
       </property>
       <property name="text">
        <string>Run BgGeneration</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="GenerateQR">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>740</y>
+        <width>150</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>150</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Generate QR Code</string>
       </property>
      </widget>
     </widget>
