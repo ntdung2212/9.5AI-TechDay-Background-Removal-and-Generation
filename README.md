@@ -35,7 +35,7 @@
   
   - Run the file directlty with command line in Terminal or CMD
 
- ## **Description**
+ ## **How to use:**
  
  - Select Image button is for selecting an image on the computer
  
